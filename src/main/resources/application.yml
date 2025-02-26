@@ -5,9 +5,13 @@ server:
   port: 8761
 
 eureka:
+  instance:
+    hostname: localhost
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: false # Eureka server does not register itself
+    fetch-registry: false # Eureka server does not fetch the registry
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 logging:
   level:
     com.netflix.eureka: OFF
